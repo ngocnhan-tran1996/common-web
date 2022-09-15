@@ -13,6 +13,9 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+
 jobs:
   dependency-review:
     runs-on: ubuntu-latest
