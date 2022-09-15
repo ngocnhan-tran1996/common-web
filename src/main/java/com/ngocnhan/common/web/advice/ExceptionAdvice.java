@@ -5,7 +5,7 @@ import com.ngocnhan.common.web.exception.DefaultException;
 import com.ngocnhan.common.web.exception.ExceptionAttribute;
 import com.ngocnhan.common.web.util.ExceptionUtil;
 import com.ngocnhan.common.web.util.ObjectUtil;
-import com.ngocnhan.common.web.util.StringUtils;
+import com.ngocnhan.common.web.util.StringUtil;
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.HttpStatus;
@@ -27,7 +27,7 @@ public class ExceptionAdvice {
     HttpStatus statusCode = ObjectUtil.getIfNull(
         HttpStatus.resolve(defaultAttribute.getStatusCode()),
         HttpStatus.INTERNAL_SERVER_ERROR);
-    String exceptionMessage = StringUtils.getIfBlank(
+    String exceptionMessage = StringUtil.getIfBlank(
         exception.getMessage(),
         defaultAttribute.getMessage());
 

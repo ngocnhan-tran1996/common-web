@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class StringUtils {
+public final class StringUtil {
 
   public static String getIfBlank(final String text, final String defaultText) {
     return isBlank(text) ? defaultText : text;
