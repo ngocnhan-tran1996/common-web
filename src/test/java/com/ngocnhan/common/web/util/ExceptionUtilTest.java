@@ -17,13 +17,10 @@ class ExceptionUtilTest {
         "500",
         "Unknown Exception",
         HttpStatus.NOT_FOUND.value());
-
-    assertEquals(
-        exceptionAttribute,
-        ExceptionUtil.createExceptionAttribute(ExceptionAttributeConstant.DEFAULT));
-    assertThrows(
-        NullPointerException.class,
-        () -> ExceptionUtil.createExceptionAttribute(null));
+    assertEquals(exceptionAttribute
+        , ExceptionUtil.createExceptionAttribute(ExceptionAttributeConstant.DEFAULT));
+    assertThrows(NullPointerException.class
+        , () -> ExceptionUtil.createExceptionAttribute(null));
   }
 
 }
