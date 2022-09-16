@@ -1,8 +1,8 @@
 package com.ngocnhan.common.web.exception;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ngocnhan.common.web.util.ObjectUtil;
 import java.io.Serializable;
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +18,7 @@ public class ExceptionAttribute implements Serializable {
   private String code;
   private String message;
 
-  @JsonIgnore
+  @Getter(AccessLevel.NONE)
   private Integer statusCode;
 
   public ExceptionAttribute(String code, String message, Integer statusCode) {

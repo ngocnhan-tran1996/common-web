@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 @RequiredArgsConstructor
 public enum ExceptionAttributeConstant {
 
-  DEFAULT("500", "Unknown Exception", HttpStatus.NOT_FOUND.value());
+  DEFAULT("500", "Unknown Exception", HttpStatus.INTERNAL_SERVER_ERROR.value());
 
   private final String code;
   private final String message;
