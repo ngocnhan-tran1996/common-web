@@ -1,8 +1,8 @@
 package com.ngocnhan.common.web.advice;
 
-import com.ngocnhan.common.web.constant.ExceptionAttributeConstant;
 import com.ngocnhan.common.web.exception.DefaultException;
 import com.ngocnhan.common.web.exception.ExceptionAttribute;
+import com.ngocnhan.common.web.exception.ExceptionAttribute.Type;
 import com.ngocnhan.common.web.util.ExceptionUtil;
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ExceptionAdvice {
 
   private final ExceptionAttribute defaultAttribute = ExceptionUtil.createExceptionAttribute(
-      ExceptionAttributeConstant.DEFAULT);
+      Type.DEFAULT);
 
   @ExceptionHandler(DefaultException.class)
   public ResponseEntity<ExceptionAttribute> handleDefaultException(
@@ -30,4 +30,13 @@ public class ExceptionAdvice {
         .body(defaultException.getExceptionAttribute());
   }
 
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<ExceptionAttribute> handleUncaughtException(
+      Exception exception) {
+
+    defaultAttribute.setMessageIfNotBlank(exception.getMessage());
+
+    return ResponseEntity.status(defaultAttribute.retrieveHttpStatus())
+        .body(defaultAttribute);
+  }
 }

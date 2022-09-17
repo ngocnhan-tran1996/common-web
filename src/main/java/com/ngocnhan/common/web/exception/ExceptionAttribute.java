@@ -1,10 +1,12 @@
 package com.ngocnhan.common.web.exception;
 
 import com.ngocnhan.common.web.util.ObjectUtil;
+import com.ngocnhan.common.web.util.StringUtil;
 import java.io.Serializable;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
@@ -27,9 +29,30 @@ public class ExceptionAttribute implements Serializable {
     this.statusCode = ObjectUtil.getIfNull(statusCode, HttpStatus.INTERNAL_SERVER_ERROR.value());
   }
 
+  public void setMessageIfNotBlank(String message) {
+    if (StringUtil.isBlank(message)) {
+      return;
+    }
+
+    this.message = message;
+  }
+
   public HttpStatus retrieveHttpStatus() {
 
     HttpStatus resolveStatusCode = HttpStatus.resolve(this.statusCode);
     return ObjectUtil.getIfNull(resolveStatusCode, HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+
+  @Getter
+  @RequiredArgsConstructor
+  public enum Type {
+
+    DEFAULT(
+        new ExceptionAttribute(
+            "500",
+            "Unknown Exception",
+            HttpStatus.INTERNAL_SERVER_ERROR.value()));
+
+    private final ExceptionAttribute exceptionAttribute;
   }
 }
