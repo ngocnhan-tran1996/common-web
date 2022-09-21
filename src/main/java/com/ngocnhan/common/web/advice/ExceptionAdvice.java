@@ -1,5 +1,6 @@
 package com.ngocnhan.common.web.advice;
 
+import com.ngocnhan.common.web.constant.AppProperty;
 import com.ngocnhan.common.web.exception.DefaultException;
 import com.ngocnhan.common.web.exception.ExceptionAttribute;
 import com.ngocnhan.common.web.exception.ExceptionAttribute.Type;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Getter
 @RestControllerAdvice
-@ConfigurationProperties(prefix = "app.exception")
+@ConfigurationProperties(prefix = AppProperty.APP_EXCEPTION)
 public class ExceptionAdvice {
 
   private final ExceptionAttribute defaultAttribute = ExceptionUtil.createExceptionAttribute(

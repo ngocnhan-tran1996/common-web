@@ -20,10 +20,11 @@ public final class LoggingUtil {
     log.info(logRequest);
   }
 
-  public static void logRequestBody(Object body) {
+  public static void logBody(Object body, String message) {
 
     String requestBody = new StringBuilder()
-        .append("REQUEST BODY=")
+        .append(message)
+        .append(" BODY=")
         .append(ObjectUtil.toString(body))
         .toString();
 
