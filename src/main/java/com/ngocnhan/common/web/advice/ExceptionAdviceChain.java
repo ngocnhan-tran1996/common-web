@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Getter
 @RestControllerAdvice
 @ConfigurationProperties(prefix = AppProperty.APP_EXCEPTION)
-public class ExceptionAdvice {
+public class ExceptionAdviceChain {
 
   private final ExceptionAttribute defaultAttribute = ExceptionUtil.createExceptionAttribute(
       Type.DEFAULT);
