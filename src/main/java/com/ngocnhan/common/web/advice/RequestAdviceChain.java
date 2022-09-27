@@ -3,7 +3,6 @@ package com.ngocnhan.common.web.advice;
 import com.ngocnhan.common.web.constant.AppProperty;
 import com.ngocnhan.common.web.constant.AppProperty.AdviceProperty;
 import com.ngocnhan.common.web.util.LoggingUtil;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.UUID;
 import javax.servlet.DispatcherType;
@@ -31,7 +30,7 @@ public class RequestAdviceChain
 
   @Override
   protected void beforeRequest(HttpServletRequest request, String message) {
-    ThreadContext.put(AppProperty.ID, UUID.randomUUID().toString());
+    ThreadContext.put(AppProperty.ID, " [" + UUID.randomUUID() + "] ");
     this.logBeforeRequest(request);
   }
 
@@ -55,7 +54,7 @@ public class RequestAdviceChain
    */
   @Override
   public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter parameter,
-      Type targetType, Class<? extends HttpMessageConverter<?>> converterType) throws IOException {
+      Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
 
     return inputMessage;
   }
