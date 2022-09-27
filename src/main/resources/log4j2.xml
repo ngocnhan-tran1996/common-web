@@ -23,12 +23,20 @@
         <SizeBasedTriggeringPolicy size="50 MB"/>
       </Policies>
     </RollingFile>
+
+    <Rewrite name="Rewrite">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="RollingFile"/>
+      <MaskRewritePolicy>
+        <MaskCharacter>*</MaskCharacter>
+        <MaskPattern>"*message[":=\s]+(.*?)"*[,}]</MaskPattern>
+      </MaskRewritePolicy>
+    </Rewrite>
   </Appenders>
 
   <Loggers>
     <Root level="info">
-      <AppenderRef ref="Console"/>
-      <AppenderRef ref="RollingFile"/>
+      <AppenderRef ref="Rewrite"/>
     </Root>
   </Loggers>
 </Configuration>
