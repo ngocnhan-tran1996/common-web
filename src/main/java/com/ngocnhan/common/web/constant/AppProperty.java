@@ -16,5 +16,6 @@ public final class AppProperty {
     private static final String ADVICE = "advice.";
     public static final String REQUEST = APP + ADVICE + "request";
     public static final String RESPONSE = APP + ADVICE + "response";
+    public static final String EXCEPTION = APP + ADVICE + "exception";
   }
 }
