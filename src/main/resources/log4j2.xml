@@ -9,8 +9,7 @@
     <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout disableAnsi="false">
         <pattern>
-          %highlight{%d %-5level}%style{%X{ID}}{bright,blue} [%style{%t - %T}{bright,blue}] %c{1.}
-          %style{%msg%n%throwable}{green}
+          %highlight{%d %-5level}%style{%X{ID}}{bright,blue} [%style{%t - %T}{bright,blue}] %c{1.} %style{%msg%n%throwable}{green}
         </pattern>
       </PatternLayout>
     </Console>
