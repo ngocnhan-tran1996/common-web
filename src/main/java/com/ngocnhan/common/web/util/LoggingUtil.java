@@ -25,7 +25,7 @@ public final class LoggingUtil {
     String requestBody = new StringBuilder()
         .append(message)
         .append(" BODY=")
-        .append(ObjectUtil.toString(body))
+        .append(ObjectUtil.toJsonString(body))
         .toString();
 
     log.info(requestBody);

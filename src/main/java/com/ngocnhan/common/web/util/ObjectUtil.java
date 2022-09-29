@@ -1,10 +1,7 @@
 package com.ngocnhan.common.web.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.Map;
-import java.util.Objects;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -33,22 +30,29 @@ public final class ObjectUtil {
         : object;
   }
 
-  public static String toString(Object obj) {
+  /**
+   * <pre>
+   * ObjectUtil.toJsonString(null)                                 = null
+   * ObjectUtil.getIfNull("")                                      = "\"\""
+   * ObjectUtil.getIfNull("zz")                                    = "\"zz\""
+   * ObjectUtil.getIfNull("{\"abc\":123}")                         = "\"{\\\"abc\\\":123}\""
+   * ObjectUtil.getIfNull(new MyObject("123"))                     = "{\"name\":123}"
+   * </pre>
+   *
+   * @param obj the {@link Object} to test, may be {@code null}
+   * @return json string of {@code object} if {@code object} is valid, otherwise return null
+   */
+  public static String toJsonString(Object obj) {
 
     if (obj == null) {
       return null;
     }
 
     try {
-      if (obj instanceof String) {
-        Map<String, Object> map = objectMapper.readValue((String) obj, new TypeReference<>() {
-        });
-        return objectMapper.writeValueAsString(map);
-      }
-
       return objectMapper.writeValueAsString(obj);
     } catch (JsonProcessingException e) {
-      return Objects.toString(obj);
+      return null;
     }
   }
+
 }

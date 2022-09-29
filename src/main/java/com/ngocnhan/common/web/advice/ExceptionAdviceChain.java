@@ -2,10 +2,9 @@ package com.ngocnhan.common.web.advice;
 
 import com.ngocnhan.common.web.constant.AppProperty;
 import com.ngocnhan.common.web.constant.AppProperty.AdviceProperty;
+import com.ngocnhan.common.web.constant.AppProperty.ExceptionProperty;
 import com.ngocnhan.common.web.exception.DefaultException;
 import com.ngocnhan.common.web.exception.ExceptionAttribute;
-import com.ngocnhan.common.web.exception.ExceptionAttribute.Type;
-import com.ngocnhan.common.web.util.ExceptionUtil;
 import lombok.Getter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @ConfigurationProperties(prefix = AppProperty.APP_EXCEPTION)
 public class ExceptionAdviceChain {
 
-  private final ExceptionAttribute defaultAttribute = ExceptionUtil.createExceptionAttribute(
-      Type.DEFAULT);
+  private final ExceptionAttribute defaultAttribute = ExceptionProperty.DEFAULT;
 
   @ExceptionHandler(DefaultException.class)
   public ResponseEntity<ExceptionAttribute> handleDefaultException(
