@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: "Web Demo"
+
+server:
+  port: 8080
+
+app:
+  exception:
+    default-attribute:
+      code: "Bad Request"
+      message: "Bad Request!"
+      status-code: "200"
+
+  log:
+    directory: log
+
+  advice:
+    request: true
+    response: true
+    exception: true
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.hibernate: DEBUG
