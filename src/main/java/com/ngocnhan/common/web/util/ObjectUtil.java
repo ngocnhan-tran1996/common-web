@@ -24,7 +24,7 @@ public final class ObjectUtil {
    * @param defaultObject the default value to return, may be {@code null}
    * @return {@code object} if it is not {@code null}, defaultObject otherwise
    */
-  public static <T> T getIfNull(T object, T defaultObject) {
+  public static <T> T getIfNull(final T object, final T defaultObject) {
     return object == null
         ? defaultObject
         : object;
@@ -42,7 +42,7 @@ public final class ObjectUtil {
    * @param obj the {@link Object} to test, may be {@code null}
    * @return json string of {@code object} if {@code object} is valid, otherwise return null
    */
-  public static String toJsonString(Object obj) {
+  public static String toJsonString(final Object obj) {
 
     if (obj == null) {
       return null;
